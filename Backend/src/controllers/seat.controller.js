@@ -150,80 +150,6 @@ const createSeat = asyncHandler(async (req, res) => {
   }
 });
 
-// get all seats for show
-// const getAllSeats = asyncHandler(async (req, res) => {
-//   try {
-//     const { showId } = req.body;
-//     const seats = await Seat.find({ show: showId })
-//       .populate({
-//         path: "show",
-//         select: "movie showDate showTime",
-//         populate: {
-//           path: "movie", // Nested population for the movie reference
-//           select: "title", // Adjust this based on your Movie schema's field for name
-//         },
-//       })
-//       .sort({ seatNumber: 1 });
-
-//     return res
-//       .status(200)
-//       .json(new ApiResponse(200, seats, "seats fetched successfully"));
-//   } catch (error) {
-//     console.log("Failed to get seats", error);
-//     throw new ApiError(
-//       500,
-//       error?.message || "something went wrong while getting seats"
-//     );
-//   }
-// });
-
-// //get available seat
-// const getAvailableSeats =asyncHandler(async (req, res) => {
-//   const { showId } = req.body;
-
-//   if (!mongoose.Types.ObjectId.isValid(showId)) {
-//     throw new ApiError(400, "Invalid show ID");
-//   }
-
-//   const seats = await Seat.find({
-//     show: showId,
-//     isBooked: false,
-//   })
-//     .populate("show", "movie theater showTime")
-//     .sort({ seatNumber: 1 });
-
-//   return res
-//     .status(200)
-//     .json(
-//       new ApiResponse(
-//         200,
-//         { seats, total: seats.length },
-//         "Available seats retrieved successfully"
-//       )
-//     );
-// });
-
-// Get All Seats for a Show dont remove
-// const getAllSeats = asyncHandler(async (req, res) => {
-//   const { showId } = req.body;
-
-//   if (!mongoose.Types.ObjectId.isValid(showId)) {
-//     throw new ApiError(400, "Invalid show ID");
-//   }
-
-//   const seats = await Seat.find({ show: showId })
-//     .populate({
-//       path: "show",
-//       select: "movie showDate showTime",
-//       populate: { path: "movie", select: "title" },
-//     })
-//     .sort({ seatNumber: 1 });
-
-//   return res
-//     .status(200)
-//     .json(new ApiResponse(200, seats, "seats fetched successfully"));
-// });
-
 // Get Available Seats
 const getAvailableSeats = asyncHandler(async (req, res) => {
   const { showId } = req.params;
@@ -246,32 +172,6 @@ const getAvailableSeats = asyncHandler(async (req, res) => {
       )
     );
 });
-
-// // update seat status    Booked || NotBooked
-// const updateSeatStatus = asyncHandler(async (req, res) => {
-//   try {
-//     const { isBooked } = req.body;
-//     const updatedSeat = await Seat.findOneAndUpdate(
-//       req.seat?._id,
-//       { isBooked },
-//       { new: true }
-//     );
-//     if (!updatedSeat) {
-//       throw new ApiError(404, "Seat not found");
-//     }
-//     return res
-//       .status(200)
-//       .json(new ApiResponse(200, updatedSeat, "seat status updated"));
-//   } catch (error) {
-//     console.log("Failed to update seat status", error);
-//     throw new ApiError(
-//       500,
-//       error?.message || "something went wrong while updating seat status"
-//     );
-//   }
-// });
-
-// controllers/seat.controllers.js
 
 const getAllSeats = asyncHandler(async (req, res) => {
   const { showId } = req.params;
