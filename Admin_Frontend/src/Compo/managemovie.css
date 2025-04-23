@@ -1,0 +1,79 @@
+/* Custom styles for ToastContainer */
+.custom-toast-container {
+  width: 320px;
+  font-family: "Arial", sans-serif;
+}
+
+/* Success toast */
+.Toastify__toast--success {
+  background: linear-gradient(135deg, #28a745, #218838); /* Green gradient */
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  font-weight: 500;
+}
+
+/* Error toast */
+.Toastify__toast--error {
+  background: linear-gradient(135deg, #dc3545, #c82333); /* Red gradient */
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  font-weight: 500;
+}
+
+/* Toast body */
+.Toastify__toast-body {
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+/* Progress bar */
+.Toastify__progress-bar {
+  background: rgba(255, 255, 255, 0.8); /* White progress bar */
+  height: 4px;
+}
+
+/* Close button */
+.Toastify__close-button {
+  color: white;
+  opacity: 0.7;
+  font-size: 16px;
+}
+
+.Toastify__close-button:hover {
+  opacity: 1;
+}
+
+/* Animation for toast */
+.Toastify__toast {
+  animation: fadeInUp 0.3s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Delete confirmation popup animation */
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Apply animation to the popup */
+.fixed .bg-white {
+  animation: popupFadeIn 0.2s ease-in-out;
+}
